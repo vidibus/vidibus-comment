@@ -3,6 +3,11 @@ class Article
   has_many :comments, :as => :commentable
 end
 
+class User
+  include Mongoid::Document
+  include Vidibus::Uuid::Mongoid
+end
+
 class Comment
   include Mongoid::Document
   include Vidibus::Comment::Mongoid
