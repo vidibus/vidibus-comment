@@ -4,9 +4,11 @@ module Vidibus
       extend ActiveSupport::Concern
 
       included do
+        belongs_to :commentable, :polymorphic => true
+
         field :content, :type => String
 
-        validates :content, :presence => true
+        validates :commentable, :content, :presence => true
       end
     end
   end
