@@ -13,7 +13,8 @@ Gem::Specification.new do |s|
   s.summary     = 'Comments what else.'
   s.description = s.summary
 
-  s.add_dependency 'activesupport', '~> 3.0'
+  s.add_dependency 'activesupport', '~> 3.0.0'
+  s.add_dependency 'actionpack', '~> 3.0.0'
   s.add_dependency 'mongoid', '~> 2.0'
   s.add_dependency 'vidibus-uuid'
 

@@ -1,14 +1,17 @@
-# $:.unshift File.expand_path('../../app', __FILE__)
+$:.unshift File.join(File.dirname(__FILE__), '..')
 
 require 'rspec'
 require 'factory_girl'
+require 'active_support'
+require 'action_controller'
 require 'vidibus-uuid'
 
 require 'vidibus-comment'
-# require 'models/comment'
 
-require 'factories'
+require 'app/models/comment'
+require 'app/controllers/comments_controller'
 require 'support/models'
+require 'factories'
 
 Mongoid.configure do |config|
   name = 'vidibus-comment_test'
