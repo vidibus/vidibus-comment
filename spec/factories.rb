@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :user do; end
 
   factory :comment do
-    association :author, :factory => :user
+    association :user
     realm_uuid '64d3a190d945012d4b2158b035f038ab'
     content 'Awesome!'
   end
