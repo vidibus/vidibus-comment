@@ -32,12 +32,12 @@ module Vidibus
         private
 
         def like_or_dislike!(user, type)
-          validate_rating(user, type)
+          raise_if_invalid(user, type)
           list = push("#{type}_users", user.uuid)
           update_attribute(type, list.size)
         end
 
-        def validate_rating(user, type)
+        def raise_if_invalid(user, type)
           message = if !%w[likes dislikes].include?(type.to_s)
             'Provide "likes" or "dislikes".'
           elsif !user.kind_of?(User) || user.uuid.nil?
