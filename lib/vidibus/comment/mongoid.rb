@@ -10,7 +10,7 @@ module Vidibus
         belongs_to :user
 
         belongs_to :reference, :class_name => 'Comment'
-        has_many :replies, :class_name => 'Comment', :inverse_of => :reference
+        has_many :replies, :class_name => 'Comment', :inverse_of => :reference, :dependent => :destroy
 
         field :content, :type => String
         field :likes, :type => Integer, :default => 0
