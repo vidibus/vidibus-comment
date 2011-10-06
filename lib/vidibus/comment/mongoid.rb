@@ -7,7 +7,7 @@ module Vidibus
         class CommentError < StandardError; end
 
         belongs_to :commentable, :polymorphic => true
-        belongs_to :author, :class_name => 'User'
+        belongs_to :user
 
         belongs_to :reference, :class_name => 'Comment'
         has_many :replies, :class_name => 'Comment', :inverse_of => :reference
@@ -18,7 +18,10 @@ module Vidibus
         field :likes_users, :type => Array, :default => []
         field :dislikes_users, :type => Array, :default => []
 
-        validates :commentable, :author, :content, :presence => true
+        validates :commentable, :user, :content, :presence => true
+
+        scope :latest, desc(:created_at)
+        scope :threads, where(:reference_id => nil)
       end
 
       module InstanceMethods
